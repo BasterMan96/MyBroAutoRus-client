@@ -1,0 +1,139 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* БЭМ блок: header */
+.header {
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header__container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header__nav {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.header__link {
+  color: #2563eb;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.header__link:hover {
+  color: #1e40af;
+}
+
+.header__title {
+  text-align: center;
+}
+
+.header__heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #374151;
+}
+
+/* БЭМ блок: car-brands */
+.car-brands {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: #f9fafb;
+}
+
+.car-brands__container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.car-brands__title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #374151;
+}
+
+.car-brands__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .car-brands__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .car-brands__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .car-brands__grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.car-brands__item {
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  transition: transform 0.2s;
+}
+
+.car-brands__item:hover {
+  transform: scale(1.05);
+}
+
+.car-brands__logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.car-brands__logo-placeholder {
+  width: 6rem;
+  height: 6rem;
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.car-brands__name {
+  text-align: center;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* БЭМ блок: page */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
+}
