@@ -1,4 +1,3 @@
-// components/Header.tsx
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -36,6 +35,9 @@ const Header: React.FC = () => {
             </Link>
             <Link href="/contacts" className="header__link" itemProp="url">
               <span className="header__link-text" itemProp="name">Контакты</span>
+            </Link>
+            <Link href="/contacts" className="header__link--button" itemProp="url">
+              <span className="header__link-text" itemProp="name">Заявка</span>
             </Link>
           </nav>
         </div>

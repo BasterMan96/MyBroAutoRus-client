@@ -1,6 +1,6 @@
 import Header from "./components/Header"
 import CarBrands from "./components/CarBrands" 
-import Breadcrumbs from "./components/Breadcrumbs"
+import Footer from "./components/footer"
 
 export default function Home() {
   return (
@@ -9,6 +9,7 @@ export default function Home() {
       <main className="main" itemScope itemType="https://schema.org/ItemList">
         <CarBrands />
       </main>
+      <Footer />
     </>
   )
 }
