@@ -1,5 +1,6 @@
-import Header from "./components/Header/Header"
+import Header from "./components/Header"
 import CarBrands from "./components/CarBrands" 
+import Breadcrumbs from "./components/Breadcrumbs"
 
 export default function Home() {
   return (

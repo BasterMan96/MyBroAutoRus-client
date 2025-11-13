@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .header {
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -95,7 +94,7 @@
 }
 
 .car-brands {
-  background-color: #f8f9fa;
+  background-color: #ffffff;
   padding: 3rem 0;
 }
 .car-brands__container {
@@ -104,87 +103,109 @@
   padding: 0 20px;
 }
 .car-brands__title {
-  font-size: 2.5rem;
+  font-size: 2rem;
   font-weight: 700;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #343a40;
-  position: relative;
-}
-.car-brands__title::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background-color: #007bff;
 }
 .car-brands__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  justify-items: center;
 }
-@media (min-width: 768px) {
-  .car-brands__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-@media (min-width: 1024px) {
+@media (min-width: 480px) {
   .car-brands__grid {
     grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 640px) {
+  .car-brands__grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+@media (min-width: 768px) {
   .car-brands__grid {
     grid-template-columns: repeat(6, 1fr);
   }
 }
+@media (min-width: 1024px) {
+  .car-brands__grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .car-brands__grid {
+    grid-template-columns: repeat(10, 1fr);
+  }
+}
 .car-brands__item {
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 1rem 0.5rem;
   transition: all 0.3s ease;
   text-align: center;
-  position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .car-brands__item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
 }
-.car-brands__item:hover .car-brands__logo-placeholder {
-  background-color: rgb(218.2368421053, 223.25, 228.2631578947);
+.car-brands__item:hover .car-brands__name {
+  color: #007bff;
 }
 .car-brands__logo-container {
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 60px;
+  width: 100%;
 }
 .car-brands__logo-placeholder {
-  width: 80px;
-  height: 80px;
-  background-color: #e9ecef;
-  border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  position: relative;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .car-brands__logo-placeholder::before {
-  content: "🚗";
-  font-size: 2rem;
+  content: none;
 }
 .car-brands__name {
-  font-size: 1rem;
-  font-weight: 600;
+  font-size: 0.875rem;
+  font-weight: 500;
   color: #343a40;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.3;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+@media (max-width: 480px) {
+  .car-brands {
+    padding: 1.5rem 0;
+  }
+  .car-brands__title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .car-brands__logo-container {
+    height: 50px;
+    margin-bottom: 0.5rem;
+  }
+  .car-brands__name {
+    font-size: 0.8rem;
+  }
 }
 
 .page {
@@ -240,4 +261,55 @@ img {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.breadcrumbs {
+  position: absolute;
+  top: var(--header-height, 80px);
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 15px 0;
+}
+.breadcrumbs__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumbs__link {
+  color: #6c757d;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+}
+.breadcrumbs__link:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+.breadcrumbs__current {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+.breadcrumbs__separator {
+  color: #6c757d;
+  font-size: 0.8rem;
+}
+@media (max-width: 768px) {
+  .breadcrumbs {
+    top: var(--header-height-mobile, 60px);
+    padding: 10px 0;
+  }
+  .breadcrumbs__link, .breadcrumbs__current {
+    font-size: 0.8rem;
+  }
 }/*# sourceMappingURL=global.css.map */
