@@ -1,9 +1,9 @@
 import type { Metadata } from 'next'
-import './globals.css'
+import './global.scss'
 
 export const metadata: Metadata = {
-  title: 'Параллельный экспорт автомобилей',
-  description: 'Широкий выбор автомобилей различных брендов через параллельный импорт',
+  title: 'Параллельный экспорт автомобилей | Каталог брендов',
+  description: 'Широкий выбор автомобилей различных брендов через параллельный импорт. Отзывы клиентов.',
 }
 
 export default function RootLayout({
@@ -13,20 +13,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "Параллельный экспорт авто",
-              "description": "Каталог автомобильных брендов доступных через параллельный импорт",
-              "url": "https://ваш-сайт.ru"
-            })
-          }}
-        />
-        {children}
+      <body itemScope itemType="https://schema.org/WebPage">
+        <div className="page">
+          {children}
+        </div>
       </body>
     </html>
   )

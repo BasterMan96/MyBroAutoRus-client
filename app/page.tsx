@@ -1,13 +1,13 @@
-import Header from './components/Header'
-import CarBrands from './components/CarBrands'
+import Header from "./components/Header/Header"
+import CarBrands from "./components/CarBrands" 
 
 export default function Home() {
   return (
-    <div className="page">
+    <>
       <Header />
-      <main className="main">
+      <main className="main" itemScope itemType="https://schema.org/ItemList">
         <CarBrands />
       </main>
-    </div>
+    </>
   )
 }

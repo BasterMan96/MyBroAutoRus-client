@@ -31,7 +31,7 @@ const CarBrands: React.FC = () => {
     <section className="car-brands" itemScope itemType="https://schema.org/ItemList">
       <meta itemProp="name" content="Каталог автомобильных брендов" />
       <div className="car-brands__container">
-        <h2 className="car-brands__title">Популярные бренды</h2>
+        <h2 className="car-brands__title">Паралельный экспорт авто</h2>
         <div className="car-brands__grid">
           {brands.map((brand) => (
             <div 
