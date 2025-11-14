@@ -1,12 +1,47 @@
-import React from "react";
+'use client';
+
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const Header: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="header" itemScope itemType="https://schema.org/WPHeader">
       <div className="header__container">
         <div className="header__content">
+          <div className="header__logo-mobile">
+            <Link href="/" className="header__logo-link" onClick={closeMenu}>
+              <Image
+                src="/logo.svg"
+                alt="Параллельный экспорт авто"
+                width={120}
+                height={35}
+                className="header__logo-image"
+                itemProp="logo"
+              />
+            </Link>
+          </div>
+
+          <button 
+            className={`header__burger ${isMenuOpen ? 'header__burger--active' : ''}`}
+            onClick={toggleMenu}
+            aria-label="Открыть меню"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
           <nav
             className="header__nav header__nav--left"
             itemScope
@@ -28,7 +63,7 @@ const Header: React.FC = () => {
             <Link href="/" className="header__logo-link">
               <Image
                 src="/logo.svg"
-                alt="Параллельный экспорт авто - выбор автомобилей различных брендов"
+                alt="Параллельный экспорт авто"
                 width={160}
                 height={45}
                 className="header__logo-image"
@@ -54,7 +89,7 @@ const Header: React.FC = () => {
             </Link>
             <Link
               href="/contacts"
-              className="header__link--button"
+              className="header__link header__link--button"
               itemProp="url"
             >
               <span className="header__link-text" itemProp="name">
@@ -63,6 +98,40 @@ const Header: React.FC = () => {
             </Link>
           </nav>
         </div>
+
+        <div className={`header__mobile-menu ${isMenuOpen ? 'header__mobile-menu--active' : ''}`}>
+          <nav 
+            className="header__mobile-nav"
+            itemScope
+            itemType="https://schema.org/SiteNavigationElement"
+          >
+            <Link href="/select-auto" className="header__mobile-link" itemProp="url" onClick={closeMenu}>
+              <span itemProp="name">Выбрать авто</span>
+            </Link>
+            <Link href="/reviews" className="header__mobile-link" itemProp="url" onClick={closeMenu}>
+              <span itemProp="name">Отзывы</span>
+            </Link>
+            <Link href="/about" className="header__mobile-link" itemProp="url" onClick={closeMenu}>
+              <span itemProp="name">О нас</span>
+            </Link>
+            <Link href="/contacts" className="header__mobile-link" itemProp="url" onClick={closeMenu}>
+              <span itemProp="name">Контакты</span>
+            </Link>
+            <Link 
+              href="/contacts" 
+              className="header__mobile-link header__mobile-link--button" 
+              itemProp="url"
+              onClick={closeMenu}
+            >
+              <span itemProp="name">Заявка</span>
+            </Link>
+          </nav>
+        </div>
+
+        <div 
+          className={`header__overlay ${isMenuOpen ? 'header__overlay--active' : ''}`}
+          onClick={closeMenu}
+        ></div>
       </div>
     </header>
   );
