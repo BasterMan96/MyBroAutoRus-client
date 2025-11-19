@@ -52,9 +52,9 @@ const Header: React.FC = () => {
                 Выбрать авто
               </span>
             </Link>
-            <Link href="/reviews" className="header__link" itemProp="url">
+            <Link href="/faq" className="header__link" itemProp="url">
               <span className="header__link-text" itemProp="name">
-                Отзывы
+                Как мы работаем
               </span>
             </Link>
           </nav>
@@ -77,9 +77,9 @@ const Header: React.FC = () => {
             itemScope
             itemType="https://schema.org/SiteNavigationElement"
           >
-            <Link href="/about" className="header__link" itemProp="url">
+            <Link href="/reviews" className="header__link" itemProp="url">
               <span className="header__link-text" itemProp="name">
-                О нас
+                Отзывы
               </span>
             </Link>
             <Link href="/contacts" className="header__link" itemProp="url">
