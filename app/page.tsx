@@ -1,6 +1,6 @@
 import Header from "./components/Header";
 import CarBrands from "./components/CarBrands";
-import Footer from "./components/footer";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (

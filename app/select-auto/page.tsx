@@ -3,7 +3,7 @@ import Header from "../components/Header";
 import Breadcrumbs from "../components/Breadcrumbs";
 import AutoFilters from "../components/AutoFilters";
 import AutoCards from "../components/AutoCards";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 
 const SelectAutoPage: React.FC = () => {
   const breadcrumbsItems = [

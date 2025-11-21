@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/Header";
-import Footer from "../components/footer";
+import Footer from "../components/Footer";
 import Breadcrumbs from "../components/Breadcrumbs";
 import Image from "next/image";
 
@@ -30,16 +30,14 @@ export default function ContactsPage() {
           />
           <div className="contacts-page__overlay"></div>
         </div>
-        
+
         <div className="container">
           <h1 className="contacts-page__title">Контакты</h1>
           <div className="contacts-page__content">
             <div className="contacts-page__info">
               <h2>ООО &quot;Кто-то&quot;</h2>
-              <p className="contacts-page__description">
-                Что-то
-              </p>
-              
+              <p className="contacts-page__description">Что-то</p>
+
               <div className="contacts-page__contact-item">
                 <div className="contact-item__icon">
                   <Image
@@ -54,7 +52,7 @@ export default function ContactsPage() {
                   <a href="tel:+79178725281">+7 (917) ...</a>
                 </div>
               </div>
-              
+
               <div className="contacts-page__contact-item">
                 <div className="contact-item__icon">
                   <Image

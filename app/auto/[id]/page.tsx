@@ -2,7 +2,7 @@
 import React from "react";
 import Header from "@/app/components/Header";
 import Breadcrumbs from "@/app/components/Breadcrumbs";
-import Footer from "@/app/components/footer";
+import Footer from "@/app/components/Footer";
 import Image from "next/image";
 
 interface AutoDetailPageProps {
