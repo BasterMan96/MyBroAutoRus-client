@@ -3,9 +3,11 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import ContactModal from "./ContactModal"; 
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -13,6 +15,15 @@ const Header: React.FC = () => {
 
   const closeMenu = () => {
     setIsMenuOpen(false);
+  };
+
+  const openModal = () => {
+    setIsModalOpen(true);
+    closeMenu(); 
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
@@ -87,15 +98,12 @@ const Header: React.FC = () => {
                 Контакты
               </span>
             </Link>
-            <Link
-              href="/contacts"
+            <button
               className="header__link header__link--button"
-              itemProp="url"
+              onClick={openModal}
             >
-              <span className="header__link-text" itemProp="name">
-                Заявка
-              </span>
-            </Link>
+              <span className="header__link-text">Заявка</span>
+            </button>
           </nav>
         </div>
 
@@ -117,14 +125,12 @@ const Header: React.FC = () => {
             <Link href="/contacts" className="header__mobile-link" itemProp="url" onClick={closeMenu}>
               <span itemProp="name">Контакты</span>
             </Link>
-            <Link 
-              href="/contacts" 
+            <button 
               className="header__mobile-link header__mobile-link--button" 
-              itemProp="url"
-              onClick={closeMenu}
+              onClick={openModal}
             >
-              <span itemProp="name">Заявка</span>
-            </Link>
+              <span>Заявка</span>
+            </button>
           </nav>
         </div>
 
@@ -133,6 +139,9 @@ const Header: React.FC = () => {
           onClick={closeMenu}
         ></div>
       </div>
+
+      {/* Модальное окно */}
+      <ContactModal isOpen={isModalOpen} onClose={closeModal} />
     </header>
   );
 };
