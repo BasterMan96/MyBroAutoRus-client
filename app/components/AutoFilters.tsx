@@ -1,13 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const AutoFilters: React.FC = () => {
-  const [selectedBodyType, setSelectedBodyType] = useState<string>("");
-  const [selectedEngine, setSelectedEngine] = useState<string>("");
-  const [selectedTransmission, setSelectedTransmission] = useState<string>("");
-  const [selectedDrive, setSelectedDrive] = useState<string>("");
-  const [selectedColor, setSelectedColor] = useState<string>("");
+interface ActiveFilters {
+  bodyType: string;
+  engine: string;
+  transmission: string;
+  drive: string;
+  color: string;
+}
+
+interface AutoFiltersProps {
+  onFiltersChange?: (filters: ActiveFilters) => void;
+  currentFilters?: ActiveFilters;
+}
+
+const AutoFilters: React.FC<AutoFiltersProps> = ({
+  onFiltersChange,
+  currentFilters,
+}) => {
+  const [selectedBodyType, setSelectedBodyType] = useState<string>(
+    currentFilters?.bodyType || ""
+  );
+  const [selectedEngine, setSelectedEngine] = useState<string>(
+    currentFilters?.engine || ""
+  );
+  const [selectedTransmission, setSelectedTransmission] = useState<string>(
+    currentFilters?.transmission || ""
+  );
+  const [selectedDrive, setSelectedDrive] = useState<string>(
+    currentFilters?.drive || ""
+  );
+  const [selectedColor, setSelectedColor] = useState<string>(
+    currentFilters?.color || ""
+  );
 
   const bodyTypes = ["Седан", "Хэтчбек", "Кроссовер", "Джип", "Минивэн"];
   const engines = ["Атмосферный", "Турбированный"];
@@ -20,11 +46,69 @@ const AutoFilters: React.FC = () => {
   const drives = ["Передний", "Задний", "Полный"];
   const colors = ["Белый", "Серый", "Черный", "Синий", "Красный"];
 
+  useEffect(() => {
+    const filters: ActiveFilters = {
+      bodyType: selectedBodyType,
+      engine: selectedEngine,
+      transmission: selectedTransmission,
+      drive: selectedDrive,
+      color: selectedColor,
+    };
+
+    if (onFiltersChange) {
+      onFiltersChange(filters);
+    }
+  }, [
+    selectedBodyType,
+    selectedEngine,
+    selectedTransmission,
+    selectedDrive,
+    selectedColor,
+    onFiltersChange,
+  ]);
+
+  useEffect(() => {
+    if (currentFilters) {
+      setSelectedBodyType(currentFilters.bodyType || "");
+      setSelectedEngine(currentFilters.engine || "");
+      setSelectedTransmission(currentFilters.transmission || "");
+      setSelectedDrive(currentFilters.drive || "");
+      setSelectedColor(currentFilters.color || "");
+    }
+  }, [
+    currentFilters?.bodyType,
+    currentFilters?.engine,
+    currentFilters?.transmission,
+    currentFilters?.drive,
+    currentFilters?.color,
+  ]);
+
+  const handleBodyTypeChange = (type: string) => {
+    setSelectedBodyType(selectedBodyType === type ? "" : type);
+  };
+
+  const handleEngineChange = (engine: string) => {
+    setSelectedEngine(selectedEngine === engine ? "" : engine);
+  };
+
+  const handleTransmissionChange = (transmission: string) => {
+    setSelectedTransmission(
+      selectedTransmission === transmission ? "" : transmission
+    );
+  };
+
+  const handleDriveChange = (drive: string) => {
+    setSelectedDrive(selectedDrive === drive ? "" : drive);
+  };
+
+  const handleColorChange = (color: string) => {
+    setSelectedColor(selectedColor === color ? "" : color);
+  };
+
   return (
     <div className="auto-filters">
       <h3 className="auto-filters__title">Фильтры</h3>
 
-      {/* Тип кузова */}
       <div className="auto-filters__section">
         <h4 className="auto-filters__section-title">ТИП КУЗОВА</h4>
         <div className="auto-filters__options">
@@ -35,7 +119,7 @@ const AutoFilters: React.FC = () => {
                 name="bodyType"
                 value={type}
                 checked={selectedBodyType === type}
-                onChange={(e) => setSelectedBodyType(e.target.value)}
+                onChange={(e) => handleBodyTypeChange(e.target.value)}
                 className="auto-filters__radio"
               />
               <span className="auto-filters__option-text">{type}</span>
@@ -44,7 +128,6 @@ const AutoFilters: React.FC = () => {
         </div>
       </div>
 
-      {/* Двигатель */}
       <div className="auto-filters__section">
         <h4 className="auto-filters__section-title">ДВИГАТЕЛЬ</h4>
         <div className="auto-filters__options">
@@ -55,7 +138,7 @@ const AutoFilters: React.FC = () => {
                 name="engine"
                 value={engine}
                 checked={selectedEngine === engine}
-                onChange={(e) => setSelectedEngine(e.target.value)}
+                onChange={(e) => handleEngineChange(e.target.value)}
                 className="auto-filters__radio"
               />
               <span className="auto-filters__option-text">{engine}</span>
@@ -64,7 +147,6 @@ const AutoFilters: React.FC = () => {
         </div>
       </div>
 
-      {/* КПП */}
       <div className="auto-filters__section">
         <h4 className="auto-filters__section-title">КПП</h4>
         <div className="auto-filters__options">
@@ -75,7 +157,7 @@ const AutoFilters: React.FC = () => {
                 name="transmission"
                 value={transmission}
                 checked={selectedTransmission === transmission}
-                onChange={(e) => setSelectedTransmission(e.target.value)}
+                onChange={(e) => handleTransmissionChange(e.target.value)}
                 className="auto-filters__radio"
               />
               <span className="auto-filters__option-text">{transmission}</span>
@@ -84,7 +166,6 @@ const AutoFilters: React.FC = () => {
         </div>
       </div>
 
-      {/* Привод */}
       <div className="auto-filters__section">
         <h4 className="auto-filters__section-title">ПРИВОД</h4>
         <div className="auto-filters__options">
@@ -95,7 +176,7 @@ const AutoFilters: React.FC = () => {
                 name="drive"
                 value={drive}
                 checked={selectedDrive === drive}
-                onChange={(e) => setSelectedDrive(e.target.value)}
+                onChange={(e) => handleDriveChange(e.target.value)}
                 className="auto-filters__radio"
               />
               <span className="auto-filters__option-text">{drive}</span>
@@ -104,7 +185,6 @@ const AutoFilters: React.FC = () => {
         </div>
       </div>
 
-      {/* Цвет */}
       <div className="auto-filters__section">
         <h4 className="auto-filters__section-title">ЦВЕТ</h4>
         <div className="auto-filters__options">
@@ -115,7 +195,7 @@ const AutoFilters: React.FC = () => {
                 name="color"
                 value={color}
                 checked={selectedColor === color}
-                onChange={(e) => setSelectedColor(e.target.value)}
+                onChange={(e) => handleColorChange(e.target.value)}
                 className="auto-filters__radio"
               />
               <span className="auto-filters__option-text">{color}</span>
@@ -123,8 +203,6 @@ const AutoFilters: React.FC = () => {
           ))}
         </div>
       </div>
-
-      <button className="auto-filters__apply-btn">Применить фильтры</button>
     </div>
   );
 };
