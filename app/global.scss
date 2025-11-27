@@ -976,10 +976,6 @@ img {
     color: $color-gray-medium;
   }
 
-  &__content {
-    // Убираем grid, используем обычный поток
-  }
-
   &__main-content {
     display: flex;
     flex-direction: column;
@@ -998,7 +994,7 @@ img {
     overflow: hidden;
     background: #f5f5f5;
     cursor: pointer;
-    
+
     &:focus {
       outline: 2px solid $color-blue;
     }
@@ -1033,7 +1029,7 @@ img {
     transition: all 0.3s ease;
     z-index: 10;
     opacity: 0;
-    
+
     .auto-detail__main-image:hover & {
       opacity: 1;
     }
@@ -1075,7 +1071,7 @@ img {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    
+
     @media (max-width: 1024px) {
       grid-template-columns: 1fr;
       gap: 1.5rem;
@@ -1110,7 +1106,6 @@ img {
     box-shadow: $shadow-light;
   }
 
-  // Стили для внутренних элементов остаются без изменений
   &__price-section {
     text-align: center;
     margin-bottom: 1.5rem;

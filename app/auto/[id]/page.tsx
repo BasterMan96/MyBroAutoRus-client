@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import React, { useState } from "react";
 import Header from "@/app/components/Header";
@@ -54,20 +54,20 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
   ];
 
   const handleNextImage = () => {
-    setSelectedImageIndex((prev) => 
+    setSelectedImageIndex((prev) =>
       prev === carData.images.length - 1 ? 0 : prev + 1
     );
   };
 
   const handlePrevImage = () => {
-    setSelectedImageIndex((prev) => 
+    setSelectedImageIndex((prev) =>
       prev === 0 ? carData.images.length - 1 : prev - 1
     );
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'ArrowRight') handleNextImage();
-    if (e.key === 'ArrowLeft') handlePrevImage();
+    if (e.key === "ArrowRight") handleNextImage();
+    if (e.key === "ArrowLeft") handlePrevImage();
   };
 
   return (
@@ -83,11 +83,9 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
           </div>
 
           <div className="auto-detail__content">
-            {/* Основной контент - фотографии и вся информация */}
             <div className="auto-detail__main-content">
-              {/* Галерея */}
               <div className="auto-detail__gallery">
-                <div 
+                <div
                   className="auto-detail__main-image"
                   onKeyDown={handleKeyDown}
                   tabIndex={0}
@@ -99,18 +97,17 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                     height={500}
                     priority
                   />
-                  
-                  {/* Кнопки навигации */}
+
                   {carData.images.length > 1 && (
                     <>
-                      <button 
+                      <button
                         className="auto-detail__nav-btn auto-detail__nav-btn--prev"
                         onClick={handlePrevImage}
                         aria-label="Предыдущее фото"
                       >
                         ‹
                       </button>
-                      <button 
+                      <button
                         className="auto-detail__nav-btn auto-detail__nav-btn--next"
                         onClick={handleNextImage}
                         aria-label="Следующее фото"
@@ -119,21 +116,20 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                       </button>
                     </>
                   )}
-                  
-                  {/* Индикатор текущего фото */}
+
                   <div className="auto-detail__image-counter">
                     {selectedImageIndex + 1} / {carData.images.length}
                   </div>
                 </div>
               </div>
 
-              {/* Все остальные элементы под фотографиями */}
               <div className="auto-detail__right">
-                {/* Блок с заказом и характеристиками в одну строку */}
                 <div className="auto-detail__top-section">
                   <div className="auto-detail__order-card">
                     <div className="auto-detail__price-section">
-                      <h3 className="auto-detail__price-title">СТОИМОСТЬ АВТО</h3>
+                      <h3 className="auto-detail__price-title">
+                        СТОИМОСТЬ АВТО
+                      </h3>
                       <div className="auto-detail__price">
                         <span className="auto-detail__price-usd">
                           {carData.price}
@@ -173,7 +169,6 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                     </p>
                   </div>
 
-                  {/* Характеристики */}
                   <div className="auto-detail__specs">
                     <h3 className="auto-detail__specs-title">Характеристики</h3>
                     <div className="auto-detail__specs-grid">
@@ -200,7 +195,9 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                         </span>
                       </div>
                       <div className="auto-detail__spec-item">
-                        <span className="auto-detail__spec-label">Двигатель:</span>
+                        <span className="auto-detail__spec-label">
+                          Двигатель:
+                        </span>
                         <span className="auto-detail__spec-value">
                           {carData.specs.engine}
                         </span>
@@ -239,7 +236,6 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                   </div>
                 </div>
 
-                {/* Описание */}
                 <div className="auto-detail__description">
                   <h3 className="auto-detail__description-title">Описание</h3>
                   <p className="auto-detail__description-text">
@@ -248,13 +244,12 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                   <div className="auto-detail__seller-comment">
                     <strong>Комментарий продавца:</strong>
                     <p>
-                      Suzuki Baleno III. Новый автомобиль по системе параллельного
-                      импорта.
+                      Suzuki Baleno III. Новый автомобиль по системе
+                      параллельного импорта.
                     </p>
                   </div>
                 </div>
 
-                {/* Форма запроса */}
                 <div className="auto-detail__request-form">
                   <h3 className="auto-detail__form-title">
                     Получить предложение
@@ -272,7 +267,10 @@ const AutoDetailPage: React.FC<AutoDetailPageProps> = ({ params }) => {
                       />
                     </div>
                     <div className="auto-detail__form-group">
-                      <label htmlFor="phone" className="auto-detail__form-label">
+                      <label
+                        htmlFor="phone"
+                        className="auto-detail__form-label"
+                      >
                         Телефон
                       </label>
                       <input
